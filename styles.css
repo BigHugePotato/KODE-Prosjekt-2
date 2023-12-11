@@ -13,3 +13,41 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: 'Open Sans', sans-serif;
 }
+
+
+  .container {
+            position: relative;
+            width: 100%;
+            height: 400px; /* Set a height for the container */
+            background-image: url('./images/hero.jpg'); /* Replace with your background image path */
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            background-color: #3498db;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            transition: background-color 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+         footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }

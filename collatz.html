@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesCollatz.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="collatz.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,42 +16,45 @@
     <main>
         <div class="mainTextBoxL">
             <div class="TextBoxL">
-            <h4>Welcome to our Collatz Conjecture exploration page!</h4>
+            <h4 style="padding-bottom: 1rem;">Welcome to our Collatz Conjecture exploration page!</h4>
             <p>Here, we delve into one of mathematics' most intriguing puzzles. The Collatz Conjecture is a simple yet unsolved problem in number theory.</p>
-            <p> It starts with any positive integer, �n, and follows a straightforward rule: if �n is even, divide it by 2; if �n is odd, multiply it by 3 and add 1. Repeat these steps with each new value. The conjecture suggests that no matter the starting number, this sequence will always reach 1.</p>
+            <p><br></p>
+            <p> It starts with any positive integer, (n), and follows a straightforward rule: if (n) is even, divide it by 2; if (n) is odd, multiply it by 3 and add 1. <br><br> Repeat these steps with each new value. The conjecture suggests that no matter the starting number, this sequence will always reach 1.</p>
             </div>
 
         </div>
         <div class="mainTextBoxR">
             <div class="TextBoxR">
-            <p>While it sounds easy, the Collatz Conjecture has evaded proof or disproof for years, presenting a fascinating challenge for mathematicians and enthusiasts alike. It serves as a perfect example of how a simple mathematical formula can produce complex and unpredictable results.</p>
+            <p>While it sounds easy, the Collatz Conjecture has evaded proof or disproof for years, presenting a fascinating challenge for mathematicians and enthusiasts alike. <br><br>It serves as a perfect example of how a simple mathematical formula can produce complex and unpredictable results.</p>
+            <p><br></p>
             <p>Below, you can test the conjecture yourself! Enter any positive integer and watch the algorithm demonstrate the Collatz Conjecture in action. Will your chosen number follow the predicted path to 1? Let's find out!</p>
             </div>
         </div>
     </main>
+    </div>
     <div class="inputContainer">
         <div class="inputBox">
-            <div class="inputField" style="border: 2px solid;">
-                <h4>Your Number:</h4>
-                <input type="number" id="userInput" placeholder="Enter a number">
+            <div class="inputHeaderBox"><h2>Inputs</h2></div>
+            <div class="inputValueBox">
+                <div class="inputField">
+                    <input type="number" id="userInput" placeholder="Enter a number">
+                </div>
+                <div class="inputButtonField">
+                    <button onclick="updateGraph()">Generate Graph</button>
+                </div>
             </div>
-            <div class="inputButtonField" style="border: 2px solid;">
-                <button onclick="updateGraph()">Generate Graph</button>
-            </div>
         </div>
-    </div>
-    <div class="resultContainer">
-        <div class="resultTextBox">
-            <h1>Results</h1>
+        <div class="resultBox">
+            <div class="resultHeaderBox"><h2>Results</h2>
+            </div>            
+            <div class="canvasBox"><canvas id="collatzGraph"></canvas></div>
         </div>
-        <div class="graphBox">
-            <canvas id="collatzGraph"></canvas>
-            <script src="collatz.js" defer></script>
-        </div>
-        <div class="sumTextBox">
+
+
+    </div>        
+    <div class="sumTextBox">
             <h4>“(Tallet) brukte X steg på å nå 1, og den høyeste verdien som ble nådd var Y”</h4>
         </div>
-    </div>
     <footer></footer>
 </body>
 </html>

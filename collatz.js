@@ -74,7 +74,7 @@ chart = new Chart(ctx, { //creates a new chart and the object contains the confi
         plugins: {
             legend: {
                 labels: {
-                    color: 'blue', // Change legend text color
+                    color: 'black', // Change legend text color
                     font: {
                         size: 16 // Change legend font size
                     }

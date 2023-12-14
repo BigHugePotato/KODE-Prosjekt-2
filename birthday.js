@@ -10,13 +10,13 @@ function birthdayParadoxCalculator(groupSize, numberOfTests) {
     }
   }
 
-  return (sharedBirthdayCount / numberOfTests) * 100; // Calculate percentage
+  return (sharedBirthdayCount / numberOfTests) * 100; 
 }
 
 function generateRandomBirthdays(groupSize) {
   const birthdays = [];
   for (let i = 0; i < groupSize; i++) {
-    const randomBirthday = Math.floor(Math.random() * 365) + 1; // 365 days in a year
+    const randomBirthday = Math.floor(Math.random() * 365) + 1; 
     birthdays.push(randomBirthday);
   }
   return birthdays;
@@ -45,7 +45,7 @@ function calculateShared() {
       2
     )}% of the test groups.`;
 
-    // Update the Birthday Paradox graph with the result
+    
     updateGraph(numberOfPeople, numberOfTestGroups);
   } else {
     const groupSize = numberOfTestGroups;
@@ -62,16 +62,16 @@ function calculateShared() {
       2
     )}% of the test groups.`;
 
-    // Update the Birthday Paradox graph with the result
+   
     updateGraph(groupSize, numberOfTestGroups);
   }
 }
 
 
-// ... (existing code)
 
 
-// ... (existing code)
+
+
 
 function updateGraph(numPeople, numberOfTestGroups) {
   const sequence = Array.from({ length: numberOfTestGroups }, (_, index) =>
@@ -103,7 +103,7 @@ function conjecture(num) {
   return sequence;
 }
 
-let chart; // Declare chart globally
+let chart; 
 
 const ctx = document.getElementById("birthgraph").getContext("2d");
 chart = new Chart(ctx, {
@@ -156,7 +156,7 @@ function birthdayParadoxCalculator(groupSize, numberOfTests) {
     }
   }
 
-  return sharedBirthdayCount; // Return the count of shared birthdays
+  return sharedBirthdayCount; 
 }
 
 // ... (other functions)
@@ -179,9 +179,9 @@ function updateGraph(numPeople, numTestGroups) {
     );
     chart.data.datasets[0].data = sequence;
 
-    // Set Y-axis ticks to match the number of people in each group
+    
     chart.options.scales.y.ticks.stepSize = 20;
-    chart.options.scales.y.ticks.suggestedMax = Math.ceil(numPeople); // Use suggestedMax instead of max
+    chart.options.scales.y.ticks.suggestedMax = Math.ceil(numPeople); 
 
     chart.options.scales.x.title.text = "Number of Groups";
     chart.options.scales.y.title.text = "Number of People";
@@ -191,7 +191,7 @@ function updateGraph(numPeople, numTestGroups) {
   }
 }
 
-// ... (other code)
+
 
 function toggleDarkMode() {
   document.body.classList.toggle("dark-mode");

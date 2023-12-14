@@ -25,11 +25,13 @@ h6 {
   font-family: "Roboto Slab", serif;
   background-color: transparent;
   color: #383838;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 p {
   font-family: "Open Sans", sans-serif;
   color: #383838;
+  text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
 }
 
 /* COLLATZ CONJECTURE
@@ -77,7 +79,7 @@ main {
 .TextBoxL {
   box-shadow: #000 1px 1px 2px;
   display: flex;
-  width: 50%;
+  width: 55%;
   flex-direction: column;
   padding: 1.7rem;
   align-items: center;
@@ -86,28 +88,13 @@ main {
 }
 .TextBoxR {
   display: flex;
-  width: 50%;
+  width: 55%;
   flex-direction: column;
   padding: 1.7rem;
   margin-right: 10rem;
   border-radius: 0.3rem;
   box-shadow: #000 1px 1px 2px;
 }
-
-/* Input
-  /************************************************************************/
-
-/* .inputContainer {
-  position: relative;
-  display: flex;
-  width: 1280px;
-  padding: 20px 121px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  background-color: transparent;
-} */
 
 /* Results
   /************************************************************************/
@@ -121,11 +108,8 @@ main {
   gap: 1rem;
 }
 
-
-
-
-
 .inputBox {
+  min-width: 200px;
   display: flex;
   padding: 10px 10px;
   flex-direction: column;
@@ -145,45 +129,40 @@ main {
 }
 
 .inputValueBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 1rem;
   width: 100%;
   background: rgba(217, 217, 217);
 }
 
 .inputField {
+  width: 100%;
   display: flex;
+  justify-content: center;
   border-radius: 5px;
-  background-color: #fafafa;
+  background-color: transparent;
 }
 .inputField input {
-    border-radius: 5px;
-    padding: 0.2rem;
+  width: 90%;
+  border-radius: 5px;
+  padding: 0.2rem;
 }
 
 .inputButtonField {
   background: rgba(217, 217, 217);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
 }
-
 
 .inputButtonField button {
   padding: 10px 30px;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
   border-radius: 5px;
   background: #507dbc;
 }
-
-
-
-
-
-
-
-
 
 .resultBox {
   display: flex;
@@ -199,7 +178,7 @@ main {
 
 .resultHeaderBox {
   background: rgba(217, 217, 217);
-  padding: 20px;
+  padding: 25px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -218,7 +197,7 @@ main {
 }
 
 .sumTextBox {
-  border: #000 3px solid;
+  border: #000 1px solid;
   display: flex;
   width: 100%;
   padding: 44px 84px;

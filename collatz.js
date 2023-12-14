@@ -18,21 +18,6 @@
 // console.log(`Final value: ${result.final}, Steps taken: ${result.steps}`);
 
 
-// function conjecture(num) {
-//   let i = num;
-//   let sequence = [i];
-//   while (i > 1) {
-//     if (i % 2 === 0) {
-//       i /= 2;
-//     } else {
-//       i = i * 3 + 1;
-//     }
-//     sequence.push(i);
-//   }
-//   return sequence;
-// }
-
-
 
 function conjecture(num) {
     let i = num;
@@ -94,8 +79,22 @@ function updateGraph() {
         chart.data.labels = sequence.map((_, index) => index + 1); //Uses map to make labels to number the x-axis
         chart.data.datasets[0].data = sequence; //Uses the numbers in the sequence array to make the values on the y-axis
         chart.update(); //draws the chart
+
+        const steps = sequence.length - 1;
+        const highestValue = Math.max(...sequence); //spread operator, expands the array to individual arguments for the Math.max function
+        document.getElementById('sumText').innerHTML = `${num} brukte ${steps} steg på å nå 1, og den høyeste verdien som ble nådd var ${highestValue}`;
     } else {
         alert('Please enter a valid positive number.');
     }
 }
+
+
+function randomNumber() {
+    const randomNum = Math.floor(Math.random() * 10000) + 1;
+
+    document.getElementById('userInput').value = randomNum;
+
+    updateGraph();
+}
+
 

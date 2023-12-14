@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
-<style>
-    #hero {
-    position: relative;
-    height: 100vh;
-}
-
-.title {
-    font-size: 2em;
-   background-color: transparent;
-   margin-bottom: 6rem; 
-}
-
-h1 {
-    font-size: 1em;
-    background-color: transparent;
-    
-}
-
-</style>
-
+    <link rel="stylesheet" href="bstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="birthday.js" defer></script>
+    <title>birthday paradox</title>
 </head>
 <body>
+  
+ 
 
-     <section id="hero">
-        <div class="heroimage">
-            <img src='./images/test1.avif' alt="background image">
-            <div class="overlay"></div>
-           <div class="centered-text">
-            <div class="title">BIRTHDAY PARADOX</div>
-            <h1>The Birthday Paradox reveals the unexpected probability that, in a group of relatively few people, there's a high chance that at least two individuals share the same birthday. It challenges common intuition about the likelihood of such occurrences.</h1>
-        </div>
-    </div>
-    </section>
-
-      <!-- Main Section -->
     <main>
-        <section id="main">
-             <h1>FDJSLFJDLKSFJDSK</h1>
-           
+          <div class="header">
+        <h1>BIRTHDAY PARADOX</h1>
+        
+        <h2></h2>
+    </div>
+        <div class="mainTextBoxL">
+            <div class="TextBoxL">
+     <h1>Birthday Paradox Calculator</h1>
+
+    <label for="peopleInput">Number of People:</label>
+    <input type="number" id="peopleInput" value="20">
+
+    <label for="groupsInput">Number of Groups:</label>
+    <input type="number" id="groupsInput" value="100">
+
+    <button onclick="calculateShared()">Calculate</button>
+
+    <p id="resultParagraph">
+        <span class="result-line" id="resultLine1"></span>
+        <span class="result-line" id="resultLine2"></span>
+    </p>
+
+    <!-- <canvas id="myChart"></canvas> -->
             </div>
-        </section>
+            
 
-
-
-
-    
-
-    <!-- Footer -->
-    <footer>
-        &copy; 2023 PARADOX EXPLORER
+        <!-- </div>
+        <div class="mainTextBoxR">
+            <div class="TextBoxR">
+        
+            </div>
+        </div> -->
+    </main>
+    <!-- <div class="inputContainer">
+        <div class="inputBox">
+            <div class="inputField" style="border: 2px solid;">
+                <h4>Your Number:</h4>
+                <input type="number" id="userInput" placeholder="Enter a number">
+            </div>
+            <div class="inputButtonField" style="border: 2px solid;">
+                <button onclick="updateGraph()">Generate Graph</button>
+            </div>
+        </div> -->
+    <!-- </div>
+    <div class="resultContainer">
+        <div class="resultTextBox">
+            <h1>Results</h1>
+        </div> -->
+        <div class="graphBox">
+           <canvas id="birthgraph"></canvas>
+            <script src="birthday.js" defer></script>
+        </div>
+        <!-- <div class="sumTextBox">
+            <h4>“(Tallet) brukte X steg på å nå 1, og den høyeste verdien som ble nådd var Y”</h4>
+        </div> -->
+    </div>
+    <footer>&copy; 2023 PARADOX EXPLORER
+        
     </footer>
-    
 </body>
 </html>

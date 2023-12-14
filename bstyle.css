@@ -4,7 +4,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #FAFAFA;
+  background-color: transparent;
+}
+
+body {
+  background-image: url(./Images/birthdayBG.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1,
@@ -19,80 +27,209 @@ h6 {
 p {
   font-family: "Open Sans", sans-serif;
 }
-    #hero {
-    position: relative;
-    height: 100vh;
+
+/* BIRTHDAY PARADOX
+/************************************************************************/
+
+.header {
+  /* border: #000 1px solid; */
+  display: flex;
+  height: 200px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+font-size: 2rem;
 }
 
-.title {
-    font-size: 2em;
-   background-color: transparent;
-   margin-bottom: 6rem; 
+main {
+  /* border: #000 1px solid; */
+  width: 100%;
+  padding: 43px 0px;
+  gap: 33px;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+.mainTextBoxL {
+  /* border: #000 3px solid; */
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  gap: 10px;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+.mainTextBoxR {
+  /* border: #000 3px solid; */
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.TextBoxL {
+  /* border: #22bc1d 3px solid; */
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  padding: 0.5px 39px 37.5px 0px;
+  align-items: center;
+  /* background-color: #E1D9D1; */
+  border-radius: 1em;
+}
+.TextBoxR {
+  /* border: #22bc1d 3px solid; */
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  padding: 0.5px 39px 37.5px 0px;
+  align-items: center;
+}
+
+/* Input
+  /************************************************************************/
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  width: 1280px;
+  padding: 20px 121px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: transparent;
+}
+
+.inputBox {
+  border: #3498db 3px solid;
+  display: flex;
+  width: 40rem;
+  height: 265px;
+  padding: 40px 50px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background: rgba(217, 217, 217);
+}
+
+.inputField {
+  display: flex;
+  gap: 2rem;
+}
+
+.inputButtonField button {
+  display: inline-flex;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 5px;
+  background: #507dbc;
+}
+
+/* Results
+  /************************************************************************/
+
+.resultContainer {
+  background-color: transparent;
+}
+
+.resultTextBox {
+  border: #000 3px solid;
+  display: flex;
+  height: 100px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: #d9d9d9;
+}
+.graphBox {
+  /* border: #b80d0d 3px solid; */
+  width: 90%; /* Set the maximum width of the chart container */
+  margin: auto; /* Center the chart container */
+}
+
+#birthgraph {
+  border: #000 1px solid;
+  width: 100%; /* Make the canvas width responsive to container */
+  height: 400px; /* Set a fixed height for the canvas */
+  background-color: white;
+}
+
+.sumTextBox {
+  border: #000 3px solid;
+  display: flex;
+  width: 100%;
+  padding: 64px 84px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+ body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
 }
 
 h1 {
-    font-size: 1em;
+   background-color: transparent;
+    margin:1em;
+}
+
+label {
+    margin-right: 10px;
     background-color: transparent;
-    
+    font-weight: bold;
 }
 
-.heroimage {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+input {
+    display: block;
+    margin: 5px auto; /* Center the input and provide some spacing */
+    padding: 5px;
+    background-color: white;
 }
 
-.heroimage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.centered-text {
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-size: 4.5rem;
-    background-color: transparent;
-   
-}
-
-
-
-
-
-
-
-.container {
-    position: absolute;
-    width:-2em;
-    height: 0em;
-     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
+button {
+    display: block;
+    margin: 5px auto 15px; /* Center the button below the input and provide spacing */
+    padding: 10px;
+    background-color: #507DBC;
     color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+button:hover {
+    background-color: #2980b9;
+}
+
+ p {
+   
+            font-weight: bold;
+            text-align: center;
+            background-color: transparent;
+            
+        }
+        
+        
+        /* footer { 
+     text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: #fff;}  */

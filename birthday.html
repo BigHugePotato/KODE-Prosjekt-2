@@ -14,9 +14,14 @@
 
     <main>
           <div class="header">
+             <div class="headerButtonBox">
+           <button class="homeButton" onclick="window.location.href='index.html'"></button>
+        </div>
         <h1>BIRTHDAY PARADOX</h1>
-        
-        <h2></h2>
+         <div class="headerButtonBox">
+            <button class="darkModeButton" onclick="toggleDarkMode()"></button>
+        </div>
+
     </div>
         <div class="mainTextBoxL">
             <div class="TextBoxL">
@@ -35,7 +40,7 @@
         <span class="result-line" id="resultLine2"></span>
     </p>
 
-    <!-- <canvas id="myChart"></canvas> -->
+    <canvas id="myChart"></canvas>
             </div>
             
 
@@ -63,7 +68,7 @@
         </div> -->
         <div class="graphBox">
            <canvas id="birthgraph"></canvas>
-            <script src="birthday.js" defer></script>
+            <script src="collatz.js" defer></script>
         </div>
         <!-- <div class="sumTextBox">
             <h4>“(Tallet) brukte X steg på å nå 1, og den høyeste verdien som ble nådd var Y”</h4>

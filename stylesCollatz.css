@@ -41,11 +41,38 @@ p {
   box-shadow: #000 1px 1px 2px;
   display: flex;
   height: 6rem;
-  padding: 10px;
-  justify-content: center;
+  padding: 10px 20px;
+  justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
 }
+.headerButtonBox{
+    display: flex;
+    justify-content: center;
+    width: 5rem;
+    background-color: transparent;
+}
+
+.darkModeButton {
+    background-image: url('./Images/dark-theme.svg');
+    background-size: contain;
+    background-position: center;
+    border: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.homeButton {
+    background-image: url('./Images/back-lightmode.svg');
+    background-size: contain;
+    background-position: center;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
 
 main {
   width: 100%;
@@ -213,4 +240,44 @@ main {
 footer {
   height: 2rem;
   background-color: #000;
+}
+
+/*DARKMODE
+/****************************************************/
+
+/* Dark Mode Styles */
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6, body.dark-mode p {
+    color: #E0E0E0; /* Light text color for headings */
+    background-color: transparent;
+}
+
+body.dark-mode .header, body.dark-mode .TextBoxL, body.dark-mode .TextBoxR, body.dark-mode .sumTextBox{
+    background-color: #2C2C2C; /* Darker background for containers and divs */
+}
+
+body.dark-mode .inputBox, body.dark-mode .inputHeaderBox, body.dark-mode .inputButtonField, body.dark-mode .inputValueBox , body.dark-mode .resultHeaderBox{
+    background: #2C2C2C; /* Slightly different shade for other elements, adjust as needed */
+}
+
+body.dark-mode .inputButtonField button {
+    background: #405C7D; /* Muted color for buttons */
+}
+
+body.dark-mode footer {
+    background-color: #333333; /* Darker footer */
+}
+
+body.dark-mode .darkModeButton {
+    background-image: url('./Images/light-theme.svg');
+    background-color: #2C2C2C;
+}
+
+body.dark-mode .homeButton {
+    background-image: url('./Images/back-darkmode.svg');
+    background-color: #2C2C2C;
+}
+
+body.dark-mode {
+    background-image: url('./Images/CollatzBgDark.png');
 }

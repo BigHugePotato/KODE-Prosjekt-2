@@ -170,17 +170,17 @@ function updateGraph(numPeople, numTestGroups) {
     numTestGroups > 0
   ) {
     const sequence = Array.from({ length: numTestGroups }, () =>
-      birthdayParadoxCalculator(numPeople, 2)
+      birthdayParadoxCalculator(numPeople, 10)
     );
 
     chart.data.labels = Array.from(
       { length: numTestGroups },
-      (_, index) => index + 2
+      (_, index) => index + 10
     );
     chart.data.datasets[0].data = sequence;
 
     // Set Y-axis ticks to match the number of people in each group
-    chart.options.scales.y.ticks.stepSize = 2;
+    chart.options.scales.y.ticks.stepSize = 10;
     chart.options.scales.y.ticks.suggestedMax = Math.ceil(numPeople); // Use suggestedMax instead of max
 
     chart.options.scales.x.title.text = "Number of Groups";

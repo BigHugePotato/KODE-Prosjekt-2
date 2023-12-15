@@ -142,8 +142,19 @@ footer {
             align-self: flex-start;
         }
         
-        
-    
+
+        @media screen and (max-width: 426px) {
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px; 
+  }
+
+  .button {
+    margin-bottom:-80px; 
+  }
+}
 
 
       

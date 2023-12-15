@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url(./Images/birthdayBG.png);
+  background-image: url(./Images/birthdayLightBg.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -288,5 +288,61 @@ body.dark-mode .homeButton {
 }
 
 body.dark-mode {
-    background-image: url('./Images/CollatzBgDark.png');
+    background-image: url('./Images/birthdayDarkBg.png');
+}
+
+
+@media screen and (max-width: 426px) {
+  body {
+    min-width: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Main
+  /************************************************************************/
+  .header h1 {
+    text-align: center;
+  }
+
+  .mainTextBoxL {
+    align-items: center;
+    height: fit-content;
+  }
+  .mainTextBoxR {
+    align-items: center;
+    height: fit-content;
+  }
+
+  .TextBoxL {
+    width: 80%;
+    margin-left: 40px;
+  }
+  .TextBoxR {
+    width: 80%;
+    margin-right: 40px;
+  }
+
+
+
+.homeButton {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  transform: translateX(-50%);
+  background-color: transparent;
+
+}
+
+.darkModeButton {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  margin-top: 10px;
+  transform: translateX(-50%);
+  background-color: transparent;
+
+}
+
+
 }

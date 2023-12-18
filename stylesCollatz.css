@@ -220,6 +220,7 @@ main {
 #collatzGraph {
   border: #000 1px solid;
   height: 25rem;
+  background-color: #fafafa;
 }
 
 .sumTextBox {
@@ -274,7 +275,8 @@ body.dark-mode .inputBox,
 body.dark-mode .inputHeaderBox,
 body.dark-mode .inputButtonField,
 body.dark-mode .inputValueBox,
-body.dark-mode .resultHeaderBox {
+body.dark-mode .resultHeaderBox,
+body.dark-mode #collatzGraph {
   background: #2c2c2c; /* Slightly different shade for other elements, adjust as needed */
 }
 

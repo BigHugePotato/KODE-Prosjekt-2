@@ -1,16 +1,17 @@
 
 function birthdayParadoxCalculator(groupSize, numberOfTests) {
-  let sharedBirthdayCount = 0;
+  let testGroupsWithSharedBirthdays = 0;
 
   for (let i = 0; i < numberOfTests; i++) {
     const birthdays = generateRandomBirthdays(groupSize);
 
     if (hasSharedBirthday(birthdays)) {
-      sharedBirthdayCount++;
+      testGroupsWithSharedBirthdays++;
+      console.log(`Test Group ${i + 1}: ${birthdays.join(", ")}`);
     }
   }
 
-  return (sharedBirthdayCount / numberOfTests) * 100; 
+  return (testGroupsWithSharedBirthdays / numberOfTests) * 100;
 }
 
 function generateRandomBirthdays(groupSize) {
@@ -39,11 +40,13 @@ function calculateShared() {
 
   if (numberOfPeople > 0) {
     result = birthdayParadoxCalculator(numberOfPeople, numberOfTestGroups);
-    document.getElementById(
-      "resultParagraph"
-    ).textContent = `In a group of ${numberOfPeople} people, with ${numberOfTestGroups} test groups, there was one or more people who shared a birthday in ${result.toFixed(
-      2
-    )}% of the test groups.`;
+   document.getElementById(
+     "resultParagraph"
+   ).textContent = `In a group of ${numberOfPeople} people, with ${numberOfTestGroups} test groups, there was one or more people who shared a birthday in ${Math.min(
+     result,
+     100
+   ).toFixed(2)}% of the test groups.`;
+
 
     
     updateGraph(numberOfPeople, numberOfTestGroups);
@@ -73,41 +76,14 @@ function calculateShared() {
 
 
 
-function updateGraph(numPeople, numberOfTestGroups) {
-  const sequence = Array.from({ length: numberOfTestGroups }, (_, index) =>
-    birthdayParadoxCalculator(numPeople, 1)
-  );
-
-  // Update the Birthday Paradox graph with the result
-  chart.data.labels = Array.from(
-    { length: numberOfTestGroups },
-    (_, index) => index + 1
-  );
-  chart.data.datasets[0].data = sequence;
-  chart.update();
-}
 
 
 
-function conjecture(num) {
-  let i = num;
-  let sequence = [i];
-  while (i > 1) {
-    if (i % 2 === 0) {
-      i /= 2;
-    } else {
-      i = i * 3 + 1;
-    }
-    sequence.push(i);
-  }
-  return sequence;
-}
-
-let chart; 
+let chart;
 
 const ctx = document.getElementById("birthgraph").getContext("2d");
 chart = new Chart(ctx, {
-  type: "line",
+  type: "scatter",
   data: {
     labels: [],
     datasets: [
@@ -117,16 +93,30 @@ chart = new Chart(ctx, {
         borderColor: "rgb(75, 192, 192)",
         backgroundColor: "rgba(75, 192, 192, 0.5)",
         borderWidth: 2,
-        tension: 0.1,
+        pointRadius: 5,
       },
     ],
   },
   options: {
     scales: {
+      x: {
+        type: "linear",
+        position: "bottom",
+        title: {
+          display: true,
+          text: "Number of Groups",
+        },
+      },
       y: {
         beginAtZero: true,
+        min: 0,
+        max: 100, // Set max to 100 for percentage
         callback: function (value) {
-          return value.toLocaleString();
+          return value.toLocaleString() + "%";
+        },
+        title: {
+          display: true,
+          text: "Percentage with Shared Birthday",
         },
       },
     },
@@ -140,27 +130,19 @@ chart = new Chart(ctx, {
         },
       },
     },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem) {
+          const group = tooltipItem.dataIndex + 20;
+          const percentage = tooltipItem.value.y.toFixed(2);
+          return `Group: ${group}, Percentage: ${percentage}%`;
+        },
+      },
+    },
     responsive: true,
     maintainAspectRatio: false,
   },
 });
-
-function birthdayParadoxCalculator(groupSize, numberOfTests) {
-  let sharedBirthdayCount = 0;
-
-  for (let i = 0; i < numberOfTests; i++) {
-    const birthdays = generateRandomBirthdays(groupSize);
-
-    if (hasSharedBirthday(birthdays)) {
-      sharedBirthdayCount++;
-    }
-  }
-
-  return sharedBirthdayCount; 
-}
-
-// ... (other functions)
-
 
 function updateGraph(numPeople, numTestGroups) {
   if (
@@ -169,22 +151,16 @@ function updateGraph(numPeople, numTestGroups) {
     !isNaN(numTestGroups) &&
     numTestGroups > 0
   ) {
-    const sequence = Array.from({ length: numTestGroups }, () =>
-      birthdayParadoxCalculator(numPeople, 20)
-    );
+    const sequence = Array.from({ length: numTestGroups }, (_, index) => ({
+      x: index + 20,
+      y: birthdayParadoxCalculator(numPeople, 20),
+    }));
 
-    chart.data.labels = Array.from(
-      { length: numTestGroups },
-      (_, index) => index + 20
-    );
+    chart.data.labels = [];
     chart.data.datasets[0].data = sequence;
 
-    
-    chart.options.scales.y.ticks.stepSize = 20;
-    chart.options.scales.y.ticks.suggestedMax = Math.ceil(numPeople); 
-
     chart.options.scales.x.title.text = "Number of Groups";
-    chart.options.scales.y.title.text = "Number of People";
+    chart.options.scales.y.title.text = "Percentage with Shared Birthday";
     chart.update();
   } else {
     alert("Please enter valid positive numbers for both fields.");
@@ -193,6 +169,37 @@ function updateGraph(numPeople, numTestGroups) {
 
 
 
+
+
+
 function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
+  const isDarkMode = document.body.classList.toggle("dark-mode");
+
+  // Define color schemes for light and dark modes
+  const lightModeColors = {
+    borderColor: "rgb(75, 192, 192)",
+    backgroundColor: "rgba(75, 192, 192, 0.5)",
+    legendColor: "black",
+    ticksColor: "black",
+  };
+
+  const darkModeColors = {
+    borderColor: "rgb(255, 205, 86)",
+    backgroundColor: "rgba(255, 205, 86, 0.5)",
+    legendColor: "white",
+    ticksColor: "white",
+  };
+
+  const currentColors = isDarkMode ? darkModeColors : lightModeColors;
+
+  // Update chart colors
+  chart.data.datasets[0].borderColor = currentColors.borderColor;
+  chart.data.datasets[0].backgroundColor = currentColors.backgroundColor;
+  chart.options.plugins.legend.labels.color = currentColors.legendColor;
+
+  chart.options.scales.y.ticks.color = currentColors.legendColor;
+  chart.options.scales.x.ticks.color = currentColors.legendColor;
+
+  // Re-render the chart
+  chart.update();
 }

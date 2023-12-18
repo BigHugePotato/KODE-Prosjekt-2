@@ -267,7 +267,7 @@ body.dark-mode , body.dark-mode , body.dark-mode .TextBoxR, body.dark-mode .sumT
     background-color: #2C2C2C; 
 }
 
-body.dark-mode .inputBox, body.dark-mode .inputHeaderBox, body.dark-mode .inputButtonField, body.dark-mode .inputValueBox , body.dark-mode .resultHeaderBox{
+body.dark-mode .inputBox, body.dark-mode .inputHeaderBox, body.dark-mode .inputButtonField, body.dark-mode .inputValueBox , body.dark-mode .resultHeaderBox,body.dark-mode #birthgraph{
     background: #2C2C2C; 
 }
 

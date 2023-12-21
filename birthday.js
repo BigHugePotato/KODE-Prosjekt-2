@@ -7,7 +7,7 @@ function birthdayParadoxCalculator(groupSize, numberOfTests) {
 
     if (hasSharedBirthday(birthdays)) {
       testGroupsWithSharedBirthdays++;
-      console.log(`Test Group ${i + 1}: ${birthdays.join(", ")}`);
+      // console.log(`Test Group ${i + 1}: ${birthdays.join(", ")}`);
     }
   }
 
@@ -133,7 +133,7 @@ chart = new Chart(ctx, {
     tooltips: {
       callbacks: {
         label: function (tooltipItem) {
-          const group = tooltipItem.dataIndex + 20;
+          const group = tooltipItem.dataIndex + 1;
           const percentage = tooltipItem.value.y.toFixed(2);
           return `Group: ${group}, Percentage: ${percentage}%`;
         },
@@ -152,8 +152,8 @@ function updateGraph(numPeople, numTestGroups) {
     numTestGroups > 0
   ) {
     const sequence = Array.from({ length: numTestGroups }, (_, index) => ({
-      x: index + 20,
-      y: birthdayParadoxCalculator(numPeople, 20),
+      x: index + 1,
+      y: birthdayParadoxCalculator(numPeople, 1),
     }));
 
     chart.data.labels = [];

@@ -1,17 +1,6 @@
-
-function birthdayParadoxCalculator(groupSize, numberOfTests) {
-  let testGroupsWithSharedBirthdays = 0;
-
-  for (let i = 0; i < numberOfTests; i++) {
-    const birthdays = generateRandomBirthdays(groupSize);
-
-    if (hasSharedBirthday(birthdays)) {
-      testGroupsWithSharedBirthdays++;
-      // console.log(`Test Group ${i + 1}: ${birthdays.join(", ")}`);
-    }
-  }
-
-  return (testGroupsWithSharedBirthdays / numberOfTests) * 100;
+function birthdayParadoxCalculator(groupSize) {
+  const birthdays = generateRandomBirthdays(groupSize);
+  return hasSharedBirthday(birthdays);
 }
 
 function generateRandomBirthdays(groupSize) {
@@ -23,10 +12,14 @@ function generateRandomBirthdays(groupSize) {
   return birthdays;
 }
 
+
 function hasSharedBirthday(birthdays) {
   const uniqueBirthdays = new Set(birthdays);
   return uniqueBirthdays.size !== birthdays.length;
 }
+
+
+
 
 
 function calculateShared() {
@@ -36,39 +29,25 @@ function calculateShared() {
   const numberOfPeople = parseInt(peopleInput.value);
   const numberOfTestGroups = parseInt(groupsInput.value);
 
-  let result;
-
-  if (numberOfPeople > 0) {
-    result = birthdayParadoxCalculator(numberOfPeople, numberOfTestGroups);
-   document.getElementById(
-     "resultParagraph"
-   ).textContent = `In a group of ${numberOfPeople} people, with ${numberOfTestGroups} test groups, there was one or more people who shared a birthday in ${Math.min(
-     result,
-     100
-   ).toFixed(2)}% of the test groups.`;
+  let sharedBirthdayCount = 0;
 
 
-    
-    updateGraph(numberOfPeople, numberOfTestGroups);
-  } else {
-    const groupSize = numberOfTestGroups;
-    let totalSharedBirthdays = 0;
-
-    for (let i = 0; i < numberOfTestGroups; i++) {
-      totalSharedBirthdays += birthdayParadoxCalculator(groupSize, 1);
+  for (let i = 0; i < numberOfTestGroups; i++) {
+    if (birthdayParadoxCalculator(numberOfPeople)) {
+      sharedBirthdayCount++;
     }
-
-    result = totalSharedBirthdays / numberOfTestGroups;
-    document.getElementById(
-      "resultParagraph"
-    ).textContent = `In a group of ${groupSize} people, with ${numberOfTestGroups} test groups, there was one or more people who shared a birthday in ${result.toFixed(
-      2
-    )}% of the test groups.`;
-
-   
-    updateGraph(groupSize, numberOfTestGroups);
   }
+
+  const sharedPercentage = (sharedBirthdayCount / numberOfTestGroups) * 100;
+
+  document.getElementById(
+    "resultParagraph"
+  ).textContent = `In a group of ${numberOfPeople} people, with ${numberOfTestGroups} test groups, there was one or more people who shared a birthday in ${sharedPercentage.toFixed(2)}% of the test groups.`;
+
+  updateGraph(sharedBirthdayCount, numberOfTestGroups - sharedBirthdayCount);
 }
+
+
 
 
 
@@ -83,94 +62,67 @@ let chart;
 
 const ctx = document.getElementById("birthgraph").getContext("2d");
 chart = new Chart(ctx, {
-  type: "scatter",
+  type: "bar",
   data: {
-    labels: [],
-    datasets: [
-      {
+    labels: ["Shared Birthday", "No Shared Birthday"],
+    datasets: [{
         label: "Birthday Paradox",
         data: [],
-        borderColor: "rgb(75, 192, 192)",
-        backgroundColor: "rgba(75, 192, 192, 0.5)",
-        borderWidth: 2,
-        pointRadius: 5,
-      },
-    ],
-  },
+        backgroundColor: [
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(255, 159, 64, 0.5)"
+        ],
+        borderColor: [
+          "rgb(75, 192, 192)",
+          "rgb(255, 159, 64)"
+        ],
+        borderWidth: 1
+      }]
+    },
   options: {
     scales: {
-      x: {
-        type: "linear",
-        position: "bottom",
-        title: {
-          display: true,
-          text: "Number of Groups",
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "Number of Groups"
+          }
         },
+        x: {
+          title: {
+            display: true,
+            text: "Outcome"
+          }
+        }
       },
-      y: {
-        beginAtZero: true,
-        min: 0,
-        max: 100, // Set max to 100 for percentage
-        callback: function (value) {
-          return value.toLocaleString() + "%";
-        },
-        title: {
-          display: true,
-          text: "Percentage with Shared Birthday",
-        },
+      plugins: {
+        legend: {
+          labels: {
+            color: "blue",
+            font: {
+              size: 16
+            }
+          }
+        }
       },
-    },
-    plugins: {
-      legend: {
-        labels: {
-          color: "blue",
-          font: {
-            size: 16,
-          },
-        },
-      },
-    },
-    tooltips: {
-      callbacks: {
-        label: function (tooltipItem) {
-          const group = tooltipItem.dataIndex + 1;
-          const percentage = tooltipItem.value.y.toFixed(2);
-          return `Group: ${group}, Percentage: ${percentage}%`;
-        },
-      },
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-  },
-});
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
 
-function updateGraph(numPeople, numTestGroups) {
-  if (
-    !isNaN(numPeople) &&
-    numPeople > 0 &&
-    !isNaN(numTestGroups) &&
-    numTestGroups > 0
-  ) {
-    const sequence = Array.from({ length: numTestGroups }, (_, index) => ({
-      x: index + 1,
-      y: birthdayParadoxCalculator(numPeople, 1),
-    }));
+function updateGraph(sharedCount, noSharedCount) {
+  chart.data.labels = ["Shared Birthday", "No Shared Birthday"];
+  chart.data.datasets[0].data = [sharedCount, noSharedCount];
 
-    chart.data.labels = [];
-    chart.data.datasets[0].data = sequence;
+  chart.type = "bar"; // Change chart type to bar
+  chart.options.scales.x.title.text = "Outcome";
+  chart.options.scales.y.title.text = "Number of Groups";
+  chart.options.plugins.tooltip.callbacks.label = function (tooltipItem) {
+    return `${tooltipItem.label}: ${tooltipItem.formattedValue} groups`;
+  };
 
-    chart.options.scales.x.title.text = "Number of Groups";
-    chart.options.scales.y.title.text = "Percentage with Shared Birthday";
-    chart.update();
-  } else {
-    alert("Please enter valid positive numbers for both fields.");
-  }
+  chart.update();
 }
-
-
-
-
-
 
 function toggleDarkMode() {
   const isDarkMode = document.body.classList.toggle("dark-mode");

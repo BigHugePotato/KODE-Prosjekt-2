@@ -77,10 +77,12 @@ main {
   display: flex;
   width: 60%;
   flex-direction: column;
-  padding: 0.5px 39px 37.5px 0px;
   align-items: center;
-  /* background-color: #E1D9D1; */
-  border-radius: 1em;
+  border-radius: 1rem;
+}
+
+#myChart {
+  height : 1px;
 }
 .TextBoxR {
   display: flex;
@@ -269,8 +271,7 @@ body.dark-mode h4,
 body.dark-mode h5,
 body.dark-mode h6,
 body.dark-mode p,
-body.dark-mode label,
-body.dark-mode footer {
+body.dark-mode label {
   color: #e0e0e0;
   background-color: transparent;
 }

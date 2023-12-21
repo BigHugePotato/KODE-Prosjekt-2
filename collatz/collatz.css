@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url(./Images/editCollatzBg.jpg);
+  background-image: url(../Images/editCollatzBg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,7 @@ p {
 }
 
 .darkModeButton {
-  background-image: url("./Images/dark-theme.svg");
+  background-image: url("../Images/dark-theme.svg");
   background-size: contain;
   background-position: center;
   border: none;
@@ -65,7 +65,7 @@ p {
 }
 
 .homeButton {
-  background-image: url("./Images/back-lightmode.svg");
+  background-image: url("../Images/back-lightmode.svg");
   background-size: contain;
   background-position: center;
   border: none;
@@ -275,17 +275,17 @@ body.dark-mode .inputButtonField button {
 }
 
 body.dark-mode .darkModeButton {
-  background-image: url("./Images/light-theme.svg");
+  background-image: url("../Images/light-theme.svg");
   background-color: #2c2c2c;
 }
 
 body.dark-mode .homeButton {
-  background-image: url("./Images/back-darkmode.svg");
+  background-image: url("../Images/back-darkmode.svg");
   background-color: #2c2c2c;
 }
 
 body.dark-mode {
-  background-image: url("./Images/CollatzBgDark.jpg");
+  background-image: url("../Images/CollatzBgDark.jpg");
 }
 
 /*MEDIA QUERY

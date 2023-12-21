@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url(./Images/birthdayLightBg.png);
+  background-image: url(./Images/birthdayLightBg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -307,7 +307,7 @@ body.dark-mode .homeButton {
 }
 
 body.dark-mode {
-  background-image: url("./Images/birthdayDarkBg.png");
+  background-image: url("./Images/birthdayDarkBg.jpg");
 }
 
 @media screen and (max-width: 426px) {

@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url(./Images/editCollatzBg.png);
+  background-image: url(./Images/editCollatzBg.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -285,7 +285,7 @@ body.dark-mode .homeButton {
 }
 
 body.dark-mode {
-  background-image: url("./Images/CollatzBgDark.png");
+  background-image: url("./Images/CollatzBgDark.jpg");
 }
 
 /*MEDIA QUERY
